@@ -10,89 +10,60 @@ ALCOHOLS = {
 
 def clean_ingredients(nombre_plato, ingredientes):
     """
-    Elimina los ingredientes duplicados de una receta.
-
-    Args:
-        nombre_plato: String con el nombre del plato
-        ingredientes: Lista de ingredientes (puede contener duplicados)
-
-    Returns:
-        Una tupla (nombre_plato, set_de_ingredientes_sin_duplicados)
+    Elimina ingredientes duplicados.
     """
-    pass  # Reemplazar con tu implementación
+    ingredientes_limpios = set(ingredientes)
+    return (nombre_plato, ingredientes_limpios)
 
 
 def check_drinks(nombre_bebida, ingredientes):
     """
-    Clasifica una bebida como "Cocktail" (contiene alcohol) o "Mocktail"
-    (no contiene alcohol) basándose en sus ingredientes.
-
-    Los ingredientes alcohólicos válidos están definidos en el set ALCOHOLS.
-
-    Args:
-        nombre_bebida: String con el nombre de la bebida
-        ingredientes: Lista de ingredientes de la bebida
-
-    Returns:
-        String con el nombre de la bebida seguido de "Cocktail" o "Mocktail"
+    Clasifica una bebida como Cocktail o Mocktail.
     """
-    pass  # Reemplazar con tu implementación
+    tiene_alcohol = False
+
+    for ingrediente in ingredientes:
+        if ingrediente in ALCOHOLS:
+            tiene_alcohol = True
+
+    if tiene_alcohol:
+        return nombre_bebida + " Cocktail"
+
+    return nombre_bebida + " Mocktail"
 
 
 def unique_chars(texto):
     """
-    Retorna un set con los caracteres únicos de un string.
-
-    Args:
-        texto: Un string
-
-    Returns:
-        Un set con los caracteres únicos del texto
-
-    Ejemplo:
-        unique_chars("hello") -> {'h', 'e', 'l', 'o'}
+    Retorna un set con los caracteres únicos del texto.
     """
-    pass  # Reemplazar con tu implementación
+    caracteres = set()
+
+    for caracter in texto:
+        caracteres.add(caracter)
+
+    return caracteres
 
 
 def sum_set(numeros):
     """
-    Recorre un set de números y retorna la suma total.
-    Si el set está vacío, retorna 0.
-
-    No se permite usar la función built-in sum(). Implementar la suma
-    recorriendo el set con un for (o while).
-
-    Args:
-        numeros: Set de números (enteros o flotantes)
-
-    Returns:
-        La suma de todos los elementos del set
-
-    Ejemplo:
-        sum_set({1, 2, 3, 4}) -> 10
-        sum_set(set()) -> 0
+    Suma los elementos de un set sin usar sum().
     """
-    pass  # Reemplazar con tu implementación
+    total = 0
+
+    for numero in numeros:
+        total += numero
+
+    return total
 
 
 def common_elements(set_a, set_b):
     """
-    Retorna un nuevo set con los elementos que aparecen en AMBOS sets.
-
-    No se permite usar el operador & ni el método .intersection().
-    Implementar la intersección recorriendo uno de los sets y
-    verificando pertenencia en el otro.
-
-    Args:
-        set_a: Primer set
-        set_b: Segundo set
-
-    Returns:
-        Set con los elementos presentes en ambos
-
-    Ejemplo:
-        common_elements({1, 2, 3}, {2, 3, 4}) -> {2, 3}
-        common_elements({1, 2}, {3, 4}) -> set()
+    Retorna los elementos presentes en ambos sets sin usar & ni intersection().
     """
-    pass  # Reemplazar con tu implementación
+    comunes = set()
+
+    for elemento in set_a:
+        if elemento in set_b:
+            comunes.add(elemento)
+
+    return comunes
